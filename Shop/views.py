@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic, View
+from search_listview.list import SearchableListView
 from Shop.models import Product
 # Create your views here.
 
@@ -8,13 +9,16 @@ class MainPageView(generic.TemplateView):
     template_name = 'index.html'
 
 
-class ProductsListView(generic.ListView):
+class ProductsListView(SearchableListView):
     template_name = 'product_list.html'
     context_object_name = 'products'
+    queryset = Product.objects.all().order_by('name')
     paginate_by = 20
-
-    def get_queryset(self):
-        return Product.objects.all().order_by('name')
+    model = Product
+    searchable_fields = ['name']
+    specifications = {
+        "name": "__icontains"
+    }
 
 
 class ProductInfoView(View):

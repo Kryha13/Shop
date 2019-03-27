@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <center>
+<h2>Product: {{ product.name }}</h2>
+    <p>Producer: {{ product.producer }}</p><br>
+    <p>Price: {{ product.price }}</p><br>
+    {% if product.image %}
+        <img width="200" height="300" src="{{ product.image.url }}">
+    {% endif %}
+    <article class="media content-section">
+        <div class="media-body">
+         <h5>Description:</h5>
+            <p>{{ product.description }}</p><br>
+        </div>
+    </article>
+    <br>
+    <a class="nav-item nav-link" href="{% url 'Shop:products_list' %}">Back to products list</a>
+    </center>
+{% endblock content %}
