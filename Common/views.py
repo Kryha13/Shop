@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -21,6 +22,9 @@ class RegisterView(View):
             user = form.save(commit=False)
             password = form.cleaned_data['password1']
             user.set_password(password)
+            user.save()
+            group = Group.objects.get(name='Customers')
+            user.groups.add(group)
             user.save()
             login(request, user)
             return redirect('/')
