@@ -6,16 +6,16 @@ from Shop.models import Product
 
 
 class MainPageView(generic.TemplateView):
-    template_name = 'index.html'
+    template_name = 'base.html'
 
 
 class ProductsListView(SearchableListView):
     template_name = 'product_list.html'
     context_object_name = 'products'
     queryset = Product.objects.all().order_by('name')
-    paginate_by = 20
+    paginate_by = 15
     model = Product
-    searchable_fields = ['name']
+    searchable_fields = ['name', 'producer']
     specifications = {
         "name": "__icontains"
     }

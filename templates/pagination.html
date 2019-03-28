@@ -6,7 +6,7 @@
             {% if i == page_obj.number %}
             <li class="active"><a href="#" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li>
             {% else %}
-            <li><a href="#" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li>
+            <li><a href="?page={{ i }}" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li>
             {% endif %}
             {% endfor %}
         </ul>
