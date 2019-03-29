@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.views import generic, View
 from django.contrib import messages
@@ -46,4 +47,8 @@ class AddProductView(PermissionRequiredMixin, View):
             messages.success(request, 'New product sucessfully added !')
             return redirect('/')
         return render(request, self.template_name, {'form': form})
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'You have no permission to add product as a Customer.')
+        return super(AddProductView, self).handle_no_permission()
 
