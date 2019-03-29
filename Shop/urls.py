@@ -1,5 +1,4 @@
 
-from django.contrib import admin
 from django.conf.urls import url
 
 from Shop.views import ProductsListView, ProductInfoView
@@ -12,6 +11,6 @@ urlpatterns = [
     url(r'^products/$', ProductsListView.as_view(), name='products_list'),
     url(r'^product/(?P<product_id>[0-9]+)/$', ProductInfoView.as_view(), name='product_info'),
     url(r'^search/$', FilterView.as_view(filterset_class=ProductFilter,
-                                         template_name='search_product.html'), name='search'),
+                                         template_name='search_product.html', ordering='name'), name='search'),
 
 ]
