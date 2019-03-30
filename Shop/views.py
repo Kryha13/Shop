@@ -54,39 +54,24 @@ class AddProductView(PermissionRequiredMixin, View):
         return super(AddProductView, self).handle_no_permission()
 
 
-class EditProductView(PermissionRequiredMixin, View):
+class EditProductView(PermissionRequiredMixin, generic.UpdateView):
     permission_required = 'shop.change_product'
+    model = Product
+    fields = ['name', 'producer', 'description', 'price', 'image']
     template_name = 'change_product.html'
-    form_class = ChangeProductForm
-
-    def get(self, request, product_id):
-        product = Product.objects.get(id=product_id)
-        form = self.form_class(initial={
-            'name': product.name,
-            'producer': product.producer,
-            'description': product.description,
-            'price': product.price,
-            'image': product.image,
-        })
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request, product_id):
-        product = Product.objects.get(id=product_id)
-        form = self.form_class(request.POST, request.FILES)
-        if form.is_valid():
-            product.name = form.cleaned_data.get('name')
-            product.producer = form.cleaned_data.get('producer')
-            product.description = form.cleaned_data.get('description')
-            product.price = form.cleaned_data.get('price')
-            if form.cleaned_data.get('image') is None:
-                product.image = product.image
-            else:
-                product.image = form.cleaned_data.get('image')
-            product.save()
-            messages.success(request, 'Product details sucessfully changed !')
-            return redirect('/')
-        return render(request, self.template_name, {'form': form})
+    success_url = reverse_lazy('Shop:products_list')
 
     def handle_no_permission(self):
         messages.error(self.request, 'You have no permission to edit product as a Customer.')
         return super(EditProductView, self).handle_no_permission()
+
+
+class DeleteProductView(PermissionRequiredMixin, generic.DeleteView):
+    permission_required = 'shop.delete_product'
+    model = Product
+    template_name = 'product_confirm_delete.html'
+    success_url = reverse_lazy('Shop:products_list')
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'You have no permission to delete product as a Customer.')
+        return super(DeleteProductView, self).handle_no_permission()
