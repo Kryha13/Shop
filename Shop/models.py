@@ -29,7 +29,8 @@ class Product(models.Model):
 
 class Order(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE)
-    products = models.ForeignKey(Product, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product)
+    quantity = models.IntegerField(default=1)
     date = models.DateField(auto_now_add=True)
     payment_deadline = models.DateField(datetime.date.today() + datetime.timedelta(days=7))
     value = models.DecimalField(max_digits=15, decimal_places=2)

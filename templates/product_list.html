@@ -25,7 +25,8 @@
     {% for product in products %}
         <tr>
         {% if product.image %}
-            <td><img width="70" height="70" src="{{ product.image.url }}"></td>
+            <td><img width="60" height="60" src="{{ product.image.url }}"></td>
+{#            <td><img src="{{ product.image_thumbnail.url }}"/></td>#}
 {#            <td>{% thumbnail '100x50' product.image_thumbnail %}</td>#}
 {#            <td>{% generateimage 'Shop:thumbnail' source=product.image_thumbnail %}</td>#}
             {% else %}

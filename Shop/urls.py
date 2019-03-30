@@ -1,7 +1,8 @@
 
 from django.conf.urls import url
 
-from Shop.views import ProductsListView, ProductInfoView, AddProductView, EditProductView, DeleteProductView
+from Shop.views import ProductsListView, ProductInfoView, AddProductView, EditProductView, DeleteProductView, \
+    OrderView, cart_add, cart_remove, cart_detail
 from django_filters.views import FilterView
 from Shop.filters import ProductFilter
 
@@ -15,5 +16,10 @@ urlpatterns = [
     url(r'^add_product/$', AddProductView.as_view(), name='add_product'),
     url(r'^edit_product/(?P<pk>[0-9]+)/$', EditProductView.as_view(), name='edit_product'),
     url(r'^delete_product/(?P<pk>[0-9]+)/$', DeleteProductView.as_view(), name='delete_product'),
+    url(r'^order/$', OrderView.as_view(), name='order'),
+
+    url(r'^cart/$', cart_detail, name='cart_detail'),
+    url(r'^add/(?P<product_id>[0-9]+)/$', cart_add, name='cart_add'),
+    url(r'^remove/(?P<product_id>[0-9]+)/$', cart_remove, name='cart_remove'),
 
 ]

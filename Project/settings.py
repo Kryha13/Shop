@@ -137,6 +137,8 @@ STATICFILES_DIRS = [
 
 ]
 
+CART_SESSION_ID = 'cart'
+
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
