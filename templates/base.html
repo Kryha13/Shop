@@ -13,7 +13,6 @@
 <div id="header">
   <ul class="navigation">
                {% if user.is_authenticated %}
-                <li>Logged as: {{ user.first_name }}</li>
                 <li class="active"><a href="{% url 'main' %}">Home</a></li>
                 <li><a href="{% url 'Shop:products_list' %}">Product list</a></li>
                 <li><a href="{% url 'Shop:search' %}">Search for product</a></li>
@@ -31,6 +30,7 @@
   </ul>
 </div>
 <div id="body"><br>
+<h10>Logged as: {{ user.first_name }}</h10>
      {% if messages %}
 
         {% for message in messages %}
