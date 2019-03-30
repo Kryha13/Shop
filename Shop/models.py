@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 import datetime
 
@@ -15,7 +17,14 @@ class Product(models.Model):
     producer = models.TextField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='images/', blank=True)
+    image = models.ImageField(upload_to='static/', blank=True)
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(50, 50)],
+                                     format='JPEG',
+                                     options={'quality': 60})
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):

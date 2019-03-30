@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <center>
+       <form method="POST" >
+           {% csrf_token %}
+           <fieldset class="form-group">
+               <legend class="border-bottom mb-4">Are you sure to delete product {{ product.name }} ?</legend>
+           </fieldset>
+           <div class="form-group">
+               <button class="btn btn-outline-info" type="submit">Yes, delete this product.</button>
+               <a href="{% url 'Shop:products_list' %}">--> No, take me back to products list.</a>
+           </div>
+       </form>
+    </center>
+{% endblock content %}

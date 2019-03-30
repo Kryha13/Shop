@@ -35,6 +35,8 @@
         <th>Product</th>
         <th>Producer</th>
         <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -44,6 +46,8 @@
           <td><a href="{% url 'Shop:product_info' product.id %}">{{ product.name }}</a></td>
           <td>{{ product.producer }}</td>
             <td>{{ product.price }}</td>
+            <td><a href="{% url 'Shop:edit_product' product.id %}">Edit</a></td>
+            <td><a href="{% url 'Shop:delete_product' product.id %}">Delete</a></td>
         </tr>
       {% empty %}
         <tr>

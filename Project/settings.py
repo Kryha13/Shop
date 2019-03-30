@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'search_listview',
     'widget_tweaks',
+    'imagekit',
+
 ]
 
 MIDDLEWARE = [
@@ -130,8 +132,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'Common/static')
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media/')
 
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'Common/static'),
     os.path.join(BASE_DIR, "Common/static/media/static"),
+    # os.path.join(BASE_DIR, "Common/static/media/CACHE/images/static/"),
+
 ]
 
 

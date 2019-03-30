@@ -17,6 +17,7 @@
                 <li class="active"><a href="{% url 'main' %}">Home</a></li>
                 <li><a href="{% url 'Shop:products_list' %}">Product list</a></li>
                 <li><a href="{% url 'Shop:search' %}">Search for product</a></li>
+                <li><a href="{% url 'Shop:add_product' %}">Add new product</a></li>
                 <li><a href="{% url 'Common:password_reset' %}">Password Reset</a></li>
                 <li><a href="{% url 'Common:logout' %}">Logout</a></li>
                {% else %}
@@ -29,6 +30,12 @@
   </ul>
 </div>
 <div id="body"><br>
+     {% if messages %}
+
+        {% for message in messages %}
+        <font color="red">{{ message }}</font>
+        {% endfor %}
+     {% endif %}
 
     {% block content %}
 

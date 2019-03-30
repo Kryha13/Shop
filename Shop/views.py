@@ -1,14 +1,13 @@
-from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django_filters.views import FilterView
 from search_listview.list import SearchableListView
 from Shop.models import Product
+from Shop.forms import AddProductForm
+
 # Create your views here.
-from Shop.forms import AddProductForm, ChangeProductForm
 
 
 class MainPageView(generic.TemplateView):
@@ -75,3 +74,8 @@ class DeleteProductView(PermissionRequiredMixin, generic.DeleteView):
     def handle_no_permission(self):
         messages.error(self.request, 'You have no permission to delete product as a Customer.')
         return super(DeleteProductView, self).handle_no_permission()
+
+
+
+
+
