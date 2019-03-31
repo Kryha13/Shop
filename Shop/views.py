@@ -1,6 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.views import generic, View
 from django.contrib import messages
@@ -10,6 +14,8 @@ from search_listview.list import SearchableListView
 from Shop.models import Product, OrderItem, Order
 from Shop.forms import AddProductForm, CartAddProductForm, OrderCreateForm
 from Shop.cart import Cart
+from Shop.utils import render_to_pdf
+from django.conf import settings
 import datetime
 
 # Create your views here.
@@ -82,16 +88,6 @@ class DeleteProductView(PermissionRequiredMixin, generic.DeleteView):
         return super(DeleteProductView, self).handle_no_permission()
 
 
-# class OrderView(PermissionRequiredMixin, View):
-#     permission_required = ('shop.add_order', 'shop.change_order', 'shop.delete_order')
-#     template_name = 'order.html'
-#     form_class = OrderForm
-#
-#     def get(self, request):
-#         form = self.form_class
-#         return render(request, self.template_name, {'form': form})
-
-
 @require_POST
 @login_required
 def cart_add(request, product_id):
@@ -149,4 +145,28 @@ class CreateOrderView(LoginRequiredMixin, View):
                                          product=item['product'],
                                          quantity=item['quantity'])
             cart.clear()
+
+            current_site = get_current_site(request)
+            mail_subject = 'Order confirmation'
+            message = render_to_string('confirmation_email.html', {
+                'user': request.user,
+                'domain': current_site.domain,
+            })
+            to_email = request.user.email
+            email = EmailMessage(mail_subject, message, to=[to_email])
+
+            pdf_context = {
+                'order': order.id,
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'total_price': form.cleaned_data['value'],
+                'date': order.date,
+                'deadline': order.payment_deadline,
+                'cart': cart,
+                'seller': settings.SELLER_ADRESS,
+            }
+            pdf = render_to_pdf('invoice.html', pdf_context)
+            email.attach('invoice{}.pdf'.format(order.id), pdf.getvalue(), 'Shop/pdf')
+            email.send()
+
             return render(request, self.template_name_post, {'order': order})

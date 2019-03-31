@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <body>
+    <center>
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'>Invoice {{ order }} </p>
+            </div>
+        </div>
+        <div class='details'>
+            Bill to: {{ first_name }} {{ last_name }} <br>
+            Amount: {{ total_price }} <br/>
+            Date: {{ date }} <br>
+            Payment deadline: {{ deadline }}
+            <hr class='hrItem' />
+        </div>
+    </center>
+    <table class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit price</th>
+        <th><strong>Price</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+            {% with product=item.product %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.total_price }}</td>
+            </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td colspan="2"></td>
+            <td><strong>{{ cart.get_total_price }}</strong></td>
+        </tr>
+    </tbody>
+    </table>
+    <br>
+    <center>
+    <h5>Payment data:</h5>
+    {% for i, j in seller.items %}
+    <p>{{ i }} : {{ j }}</p>
+    {% endfor %}
+    </center>
+    </body>
+</html>

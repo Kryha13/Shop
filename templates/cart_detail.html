@@ -56,9 +56,9 @@
     </table>
 
     <p align="center">
-        <a href="{% url 'Shop:products_list' %}" class="button">Continue shopping</a>
-        <br>
-        <a href="{% url 'Shop:order' %}" class="button">Order</a>
+        <button class="btn btn-outline-info" type="submit"><a href="{% url 'Shop:products_list' %}" class="button">Continue shopping</a></button>
+        <br><br>
+        <button class="btn btn-outline-info" type="submit"><a href="{% url 'Shop:order' %}" class="button">Order</a></button>
     </p>
 
 {% endblock content %}

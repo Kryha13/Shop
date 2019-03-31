@@ -153,3 +153,11 @@ EMAIL_PORT = 587
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SELLER_ADRESS = {
+    'Name': 'Seller',
+    'City': 'Warsaw',
+    'Street': 'Pulawska 18',
+    'Postal_code': '01-848',
+    'Bank_account': '49782934294'
+}
