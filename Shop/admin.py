@@ -1,8 +1,23 @@
 from django.contrib import admin
-from Shop.models import Product, Order, ClientAdress
+from Shop.models import Product, Order, OrderItem, ClientAdress
 
 # Register your models here.
 
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    raw_id_fields = ['product']
+
+
+# class ClientAdressInline(admin.TabularInline):
+#     model = ClientAdress
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'client', 'date', 'payment_deadline', 'value']
+    inlines = [OrderItemInline]
+
+
 admin.site.register(Product)
-admin.site.register(Order)
-admin.site.register(ClientAdress)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderItem)

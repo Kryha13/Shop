@@ -1,15 +1,56 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+     <center><h1>Your order details</h1></center>
+    <table class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit price</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+        {% for item in cart %}
+            {% with product=item.product %}
+            <tr>
+                <td>
+                    <a href="{{ product.get_absolute_url }}">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}"/>
+                        {% else %}
+                        <p>No image</p>
+                        {% endif %}
+                    </a>
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.total_price }}</td>
+            </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td colspan="3"></td>
+            <td>{{ cart.get_total_price }}</td>
+        </tr>
+    </tbody>
+    </table>
    <div class="content-section">
        <form method="POST" enctype="multipart/form-data" >
            {% csrf_token %}
            <fieldset class="form-group">
-               <legend class="border-bottom mb-4">Order products</legend>
                {{ form|crispy }}
            </fieldset>
            <div class="form-group">
                <button class="btn btn-outline-info" type="submit">Order</button>
            </div>
        </form>
+
 {% endblock content %}

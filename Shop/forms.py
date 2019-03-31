@@ -27,9 +27,10 @@ class CartAddProductForm(forms.Form):
                                 widget=forms.HiddenInput)
 
 
-class OrderForm(forms.ModelForm):
+class OrderCreateForm(forms.ModelForm):
+    payment_deadline = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    value = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
 
     class Meta:
         model = Order
-        fields = ['products']
-
+        fields = ['payment_deadline', 'value']

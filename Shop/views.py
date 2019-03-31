@@ -1,14 +1,16 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic, View
 from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.views.decorators.http import require_POST
 from search_listview.list import SearchableListView
-from Shop.models import Product
-from Shop.forms import AddProductForm, OrderForm, CartAddProductForm
+from Shop.models import Product, OrderItem, Order
+from Shop.forms import AddProductForm, CartAddProductForm, OrderCreateForm
 from Shop.cart import Cart
+import datetime
 
 # Create your views here.
 
@@ -80,14 +82,14 @@ class DeleteProductView(PermissionRequiredMixin, generic.DeleteView):
         return super(DeleteProductView, self).handle_no_permission()
 
 
-class OrderView(PermissionRequiredMixin, View):
-    permission_required = ('shop.add_order', 'shop.change_order', 'shop.delete_order')
-    template_name = 'order.html'
-    form_class = OrderForm
-
-    def get(self, request):
-        form = self.form_class
-        return render(request, self.template_name, {'form': form})
+# class OrderView(PermissionRequiredMixin, View):
+#     permission_required = ('shop.add_order', 'shop.change_order', 'shop.delete_order')
+#     template_name = 'order.html'
+#     form_class = OrderForm
+#
+#     def get(self, request):
+#         form = self.form_class
+#         return render(request, self.template_name, {'form': form})
 
 
 @require_POST
@@ -118,3 +120,33 @@ def cart_detail(request):
                                                                    'update': True})
     return render(request, 'cart_detail.html', {'cart': cart})
 
+
+class CreateOrderView(LoginRequiredMixin, View):
+    template_name_get = 'order.html'
+    template_name_post = 'order_created.html'
+    form_class = OrderCreateForm
+
+    def get(self, request):
+        cart = Cart(request)
+        for item in cart:
+            item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
+                                                                       'update': True})
+        form = self.form_class(initial={
+            'payment_deadline': datetime.date.today() + datetime.timedelta(days=5),
+            'value': cart.get_total_price(),
+        })
+        return render(request, self.template_name_get, {'form': form, 'cart': cart})
+
+    def post(self, request):
+        cart = Cart(request)
+        form = self.form_class(request.POST, request.user)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.client_id = request.user.id
+            order.save()
+            for item in cart:
+                OrderItem.objects.create(order=order,
+                                         product=item['product'],
+                                         quantity=item['quantity'])
+            cart.clear()
+            return render(request, self.template_name_post, {'order': order})
