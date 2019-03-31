@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load imagekit %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
         <form action="#" method="GET" id="form_page" onsubmit="return check_change()">
@@ -30,7 +31,7 @@
 {#            <td>{% thumbnail '100x50' product.image_thumbnail %}</td>#}
 {#            <td>{% generateimage 'Shop:thumbnail' source=product.image_thumbnail %}</td>#}
             {% else %}
-            <td>No image</td>
+            <td><img width="60" height="60" src="/static/noimage.jpg"></td>
             {% endif %}
           <td><a href="{% url 'Shop:product_info' product.id %}">{{ product.name }}</a></td>
           <td>{{ product.producer }}</td>

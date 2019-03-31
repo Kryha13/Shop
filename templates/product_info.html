@@ -16,10 +16,10 @@
     </article>
         <form action="{% url 'Shop:cart_add' product.id %}" method="post">
         {% csrf_token %}
-        {{ cart_product_form }}
+        {{ cart_product_form }} <br>
         <input type="submit" value="Add to cart">
     </form>
     <br>
-    <a class="nav-item nav-link" href="{% url 'Shop:products_list' %}">Back to products list</a>
+        <button class="btn btn-outline-info" type="submit"><a href="{% url 'Shop:products_list' %}">Back to products list</a></button>
     </center>
 {% endblock content %}

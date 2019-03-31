@@ -1,13 +1,13 @@
 
-<div class="row col-sm-12" id="paginator">
+<div id="paginator">
     <div class="text-center">
         <ul class="pagination">
             {% for i in paginator.page_range %}
-            {% if i == page_obj.number %}
-            <li class="active"><a href="#" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li>
-            {% else %}
-            <li><a href="?page={{ i }}" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li>
-            {% endif %}
+                {% if i == page_obj.number %}
+                    <li class="active"><a href="#" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li>
+                {% else %}
+                    <button><li><a href="?page={{ i }}" onclick="change_page({{i}})" rel="{{ i }}">{{ i }}</a></li></button>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

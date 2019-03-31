@@ -1,17 +1,15 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.views.decorators.http import require_POST
 from search_listview.list import SearchableListView
-from Shop.models import Product, OrderItem, Order
+from Shop.models import Product, OrderItem
 from Shop.forms import AddProductForm, CartAddProductForm, OrderCreateForm
 from Shop.cart import Cart
 from Shop.utils import render_to_pdf

@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% load widget_tweaks %}
 {% block content %}
+</form>
 <form method="get">
     <div class="well">
       <h4 style="margin-top: 0">Filter by:</h4>
@@ -32,6 +33,7 @@
   <table class="table table-bordered">
     <thead>
       <tr>
+          <th>Image</th>
         <th>Product</th>
         <th>Producer</th>
         <th>Price</th>
@@ -43,6 +45,14 @@
       {% for product in filter.qs %}
 
         <tr>
+                {% if product.image %}
+            <td><img width="60" height="60" src="{{ product.image.url }}"></td>
+{#            <td><img src="{{ product.image_thumbnail.url }}"/></td>#}
+{#            <td>{% thumbnail '100x50' product.image_thumbnail %}</td>#}
+{#            <td>{% generateimage 'Shop:thumbnail' source=product.image_thumbnail %}</td>#}
+            {% else %}
+            <td><img width="60" height="60" src="/static/noimage.jpg"></td>
+            {% endif %}
           <td><a href="{% url 'Shop:product_info' product.id %}">{{ product.name }}</a></td>
           <td>{{ product.producer }}</td>
             <td>{{ product.price }}</td>

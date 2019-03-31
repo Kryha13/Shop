@@ -30,7 +30,9 @@
   </ul>
 </div>
 <div id="body"><br>
-<h10>Logged as: {{ user.first_name }} {{ user.last_name }}</h10>
+{% if user.is_authenticated %}
+    <h10><strong>Logged as: {{ user.first_name }} {{ user.last_name }}</strong></h10>
+{% endif %}
      {% if messages %}
 
         {% for message in messages %}
