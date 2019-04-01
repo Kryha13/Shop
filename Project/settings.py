@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from celery.schedules import crontab
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -160,4 +163,18 @@ SELLER_ADRESS = {
     'Street': 'Pulawska 18',
     'Postal_code': '01-848',
     'Bank_account': '49782934294'
+}
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+# USE_TZ = True
+CELERY_TIMEZONE = 'Europe/Warsaw'
+CELERY_BEAT_SCHEDULE = {
+    'email_reminder': {
+            'task': 'Shop.tasks.email_reminder',
+            'schedule': crontab(hour=8),
+        },
 }
