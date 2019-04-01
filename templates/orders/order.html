@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-     <center><h1>Your order details</h1></center>
+ <center><h1>Your order details</h1></center>
     <table class="table table-bordered">
-
     <thead>
       <tr>
         <th>Image</th>
@@ -13,9 +12,7 @@
         <th>Price</th>
       </tr>
     </thead>
-
     <tbody>
-
         {% for item in cart %}
             {% with product=item.product %}
             <tr>
@@ -52,5 +49,4 @@
                <center><button class="btn btn-outline-info" type="submit">Confirm order</button></center>
            </div>
        </form>
-
 {% endblock content %}

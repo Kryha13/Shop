@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
-
 {% block content %}
-
     <center><h1>Your shopping cart</h1></center>
     <table class="table table-bordered">
-
     <thead>
       <tr>
         <th>Image</th>
@@ -17,9 +13,7 @@
         <th>Price</th>
       </tr>
     </thead>
-
     <tbody>
-
         {% for item in cart %}
             {% with product=item.product %}
             <tr>
@@ -54,11 +48,9 @@
         </tr>
     </tbody>
     </table>
-
     <p align="center">
         <button class="btn btn-outline-info" type="submit"><a href="{% url 'Shop:products_list' %}" class="button">Continue shopping</a></button>
         <br><br>
         <button class="btn btn-outline-info" type="submit"><a href="{% url 'Shop:order' %}" class="button">Order</a></button>
     </p>
-
 {% endblock content %}

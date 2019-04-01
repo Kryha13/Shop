@@ -29,12 +29,15 @@ class Product(models.Model):
 
 class ClientAdress(models.Model):
     client = models.OneToOneField(User, on_delete=models.CASCADE)
-    company = models.TextField(max_length=100)
+    company = models.TextField(max_length=100, null=True, blank=True)
     street = models.TextField(max_length=100)
     house_number = models.IntegerField()
     local_number = models.IntegerField()
-    postal_code = models.CharField(max_length=5)
+    postal_code = models.CharField(max_length=6)
     city = models.TextField(max_length=100)
+
+    def __str__(self):
+        return self.client.first_name + ' ' + self.client.last_name
 
 
 class Order(models.Model):
@@ -54,4 +57,3 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.product.price * self.quantity
-

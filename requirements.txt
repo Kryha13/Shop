@@ -6,7 +6,6 @@ django-appconf==1.0.3
 django-crispy-forms==1.7.2
 django-filter==2.1.0
 django-imagekit==4.0.2
-django-pagination==1.0.7
 django-search-listview==0.2.1
 django-widget-tweaks==1.4.3
 Faker==1.0.4

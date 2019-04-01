@@ -1,11 +1,10 @@
 from django.contrib.auth import login
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.views import View
 
 from Common.forms import UserRegisterForm
+# Create your views here.
 
 
 class RegisterView(View):
@@ -28,5 +27,4 @@ class RegisterView(View):
             user.save()
             login(request, user)
             return redirect('/')
-
         return render(request, self.template_name, {'form': form})

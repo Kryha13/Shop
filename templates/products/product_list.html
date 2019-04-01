@@ -3,14 +3,17 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
-        <form action="#" method="GET" id="form_page" onsubmit="return check_change()">
+{% if messages %}
+    {% for message in messages %}
+        <font color="red">{{ message }}</font>
+    {% endfor %}
+{% endif %}
+<form action="#" method="GET" id="form_page" onsubmit="return check_change()">
     {%if paginator %}
-        {% include "pagination.html" %}
+        {% include "products/pagination.html" %}
     {% endif %}
 </form>
-    <center>
-
-
+<center>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -30,9 +33,9 @@
 {#            <td><img src="{{ product.image_thumbnail.url }}"/></td>#}
 {#            <td>{% thumbnail '100x50' product.image_thumbnail %}</td>#}
 {#            <td>{% generateimage 'Shop:thumbnail' source=product.image_thumbnail %}</td>#}
-            {% else %}
+        {% else %}
             <td><img width="60" height="60" src="/static/noimage.jpg"></td>
-            {% endif %}
+        {% endif %}
           <td><a href="{% url 'Shop:product_info' product.id %}">{{ product.name }}</a></td>
           <td>{{ product.producer }}</td>
           <td>{{ product.price }}</td>
@@ -43,15 +46,13 @@
         <tr>
           <td colspan="5">No data</td>
         </tr>
-       {% endfor %}
-
+    {% endfor %}
     </tbody>
   </table>
-    </center>
-    <form action="#" method="GET" id="form_page" onsubmit="return check_change()">
+</center>
+<form action="#" method="GET" id="form_page" onsubmit="return check_change()">
     {%if paginator %}
-        {% include "pagination.html" %}
+        {% include "products/pagination.html" %}
     {% endif %}
 </form>
 {% endblock content %}
-

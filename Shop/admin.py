@@ -9,10 +9,6 @@ class OrderItemInline(admin.TabularInline):
     raw_id_fields = ['product']
 
 
-# class ClientAdressInline(admin.TabularInline):
-#     model = ClientAdress
-
-
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'client', 'date', 'payment_deadline', 'value']
     inlines = [OrderItemInline]
@@ -21,3 +17,4 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Product)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem)
+admin.site.register(ClientAdress)

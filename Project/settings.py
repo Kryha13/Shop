@@ -140,8 +140,7 @@ STATICFILES_DIRS = [
 
 ]
 
-CART_SESSION_ID = 'cart'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -151,12 +150,13 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'krystian.qaz123@gmail.com'
-EMAIL_HOST_PASSWORD = 'mamaqaz123'
+EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
 
+# session for cart
+CART_SESSION_ID = 'cart'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+# for invoicing
 SELLER_ADRESS = {
     'Name': 'Seller',
     'City': 'Warsaw',
@@ -165,12 +165,12 @@ SELLER_ADRESS = {
     'Bank_account': '49782934294'
 }
 
+# email reminder scheduling
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-# USE_TZ = True
 CELERY_TIMEZONE = 'Europe/Warsaw'
 CELERY_BEAT_SCHEDULE = {
     'email_reminder': {
