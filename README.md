@@ -5,7 +5,7 @@ Application for online shopping.
 - Login, register, password reset
 - products list
 - filtering products 
-- add new product (as a seller)
+- add new product, modify, delete (as a seller)
 - shopping cart (as a customer)
 - email confirmations of order and daily reminders of payment deadline
 - email invoicing
