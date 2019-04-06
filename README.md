@@ -15,3 +15,14 @@ Application for online shopping.
 - HTML/CSS
 - Celery
 - Redis
+
+https://everyshop.herokuapp.com/
+
+For tests:
+	-->Client
+	login: customer
+	password: klient123
+	
+	-->Seller
+	login: seller
+	password: sprzedawca
