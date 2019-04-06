@@ -129,27 +129,7 @@
 	clear:both;
 	width:640px;
 }
-#body #content .content ul.articles li {
-	background:url("../media/bg-blog-bottom-curve.gif");
-	background-position: left bottom;
-	background-repeat:no-repeat;
-}
-#body #content .content ul.articles li div {
-	height:98px;
-	line-height:78px;
-	background:url("../media/bg-blog-heading.gif");
-	background-position: top center;
-	background-repeat:no-repeat;
-}
-#body #content .content ul.articles li p {
-	background:url("../media/bg-blog-content.gif");
-	background-position: left;
-	background-repeat:repeat-y;
-	margin:-10px 0 8px 0;
-	padding: 0 10px 0 48px;
-	font-family:"Myriad Pro";
-	font-size:14px;
-}
+
 #body #content .content ul.articles li p a {
 	color:#FF9D13;
 }
@@ -171,126 +151,15 @@
 	font-weight:normal;
 	font-size:28px;
 }
-#body #content .content div a.old {
-	background:url("../media/top-border-short.gif");
-	background-position: top center;
-	background-repeat:no-repeat;
-	display:inline-block;
-	width:118px;
-	height:35px;
-	text-align:center;
-	line-height:35px;
-	position:relative;
-	left:400px;
-	margin-bottom:50px;
-	color:#7F7154;
-	text-decoration:none;
-	font-family:"Myriad pro";
-	margin-top:25px;
-}
-#body #content .content div a.new {
-	background:url("../media/top-border-short.gif");
-	background-position: top center;
-	background-repeat:no-repeat;
-	display:inline-block;
-	width:118px;
-	height:35px;
-	line-height:35px;
-	position:relative;
-	left:40px;
-	text-align:center;
-	margin-bottom:50px;
-	margin-top:25px;
-	color:#7F7154;
-	text-decoration:none;
-	font-family:"Myriad pro";
-}
+
 #body #content .content div a.old:hover {
 	color:#000000;
 }
 #body #content .content div a.new:hover {
-	color:#000000;
+	color: #000000;
 }
-#body #content .content ul.articles li a.heart {
-	background:url("../media/icons.gif");
-	background-position: 5px -374px;
-	background-repeat:no-repeat;
-	display:inline-block;
-	width:20px;
-	height:20px;
-	margin-top:25px;/*
-	  *margin-top:0px; 
-	  */
-	}
-#body #content .content ul.articles li a.facebook {
-	background:url("../media/icons.gif");
-	background-position: 0 -124px;
-	background-repeat:no-repeat;
-	display:inline-block;
-	width:20px;
-	height:20px;/*
-	   *margin-top:0px;
-	   */
-	   
-	}
-#body #content .content ul.articles li a.twitter {
-	background:url("../media/icons.gif");
-	background-position: 0 -534px;
-	background-repeat:no-repeat;
-	display:inline-block;
-	width:20px;
-	height:20px;/*
-	   *margin-top:0px;
-	   */
-	}
 /**--------- End of Blog Page Style **/	
-	
-  /**----------- Start of Pet Mart Page Style ----------**/
-  
-  
-  #body #content .search {
-	background:url("../media/bg-search-form2.gif");
-	background-position:center;
-	background-repeat:no-repeat;
-	width:540px;
-	height:75px;
-	margin:0 auto;
-	margin-top:80px;
-	margin-bottom:80px;
-}
-#body #content .search input {
-	background:url("../media/input-search2.gif");
-	background-position:center;
-	background-repeat:no-repeat;
-	width:420px;
-	padding: 8px 5px;
-	border:0;
-	margin:5px 3px 5px 10px;
-	font-size:14px;
-	font-family:"Myriad Pro";
-	color:#7f7154;
-}
-#body #content .search button {
-	background:url("../media/buttons.gif");
-	background-position: 0 -270px;
-	background-repeat:no-repeat;
-	width:77px;
-	height:30px;
-	border:0;
-	margin:5px 5px 5px 0;
-	cursor:pointer;
-}
-#body #content .search label {
-	font-size:14px;
-	font-family:"Myriad Pro";
-	color:#ffffff;
-}
-#body #content .search label input {
-	margin: 0 10px 0 10px;
-	width:10px;
-	background:transparent;
-}
-/**----------- End of Pet Mart Page Style ----------**/
+
   
   
   /**------------ Start of About page style  -------------**/
@@ -415,44 +284,11 @@
 	color:#ffffff;
 	font-weight:normal;
 }
-#body #content .content .paging {
-	margin:0 0 20px 40px;
-	background:url("../media/border-dotted.gif");
-	background-position:top;
-	background-repeat:repeat-x;
-	width:480px;
-	height:80px;
-}
-#body #content .content .paging a {
-	text-decoration:none;
-	font-size:24px;
-	font-family:"Myriad Pro";
-	color:#ffffff;
-	text-align:center;
-	background:url("../media/buttons.gif");
-	background-position: 0 -90px;
-	background-repeat:repeat-x;
-	height:40px;
-	width:40px;
-	float:left;
-	margin:20px 5px 20px 5px;
-	line-height:40px;
-}
+
 #body #content .content .paging a:hover {
 	color:#000000;
 }
-#body #content .content .paging a.active {
-	background:url("../media/buttons.gif");
-	background-position: 0 0;
-	background-repeat:repeat-x;
-}
-#body #content .content .paging a.next {
-	background:url("../media/buttons.gif");
-	background-position: 0 -180px;
-	background-repeat:repeat-x;
-	height:40px;
-	width:100px;
-}
+
 /**---------------- End for Pet guide Page Style ------------------**/
   
   
@@ -464,27 +300,7 @@
 	width:300px;
 	background-image:none;
 }
-#body #content #sidebar div#section {
-	background:url("../media/bg-sidebar-heading.gif");
-	background-position:top center;
-	background-repeat:no-repeat;
-	height:auto;
-	overflow:hidden;
-	margin-top:80px;
-}
-#body #content #sidebar div#section div {
-	background:url("../media/bg-sidebar-bottom-curve.gif");
-	background-position:bottom center;
-	background-repeat:no-repeat;
-	height:auto;
-	padding: 12px 4px 12px 4px;
-}
-#body #content #sidebar div#section div div {
-	background:url("../media/bg-sidebar.gif");
-	background-position:center;
-	height:auto;
-	overflow:hidden;
-}
+
 #body #content #sidebar div#section div div h2 {
 	margin-left:25px;
 	font-weight:normal;
@@ -511,29 +327,8 @@
 	margin:0;
 	padding:0 0 0 30px;
 }
-#body #content #sidebar div#section div div ul.archive li {
-	background:url("../media/top-border-long.gif");
-	background-position:top center;
-	background-repeat:no-repeat;
-}
-#body #content #sidebar div#section div div ul.archive li a {
-	line-height:50px;
-	color:#7F7154;
-	font-size:18px;
-	font-family:"Myriad Pro";
-	background:url("../media/icons.gif");
-	background-position: 190px 20px;
-	background-repeat:no-repeat;
-	width:210px;
-	display:inline-block;
-	color:#FF9D13;
-}
-#body #content #sidebar div#section div div ul.archive li a.active {
-	background:url("../media/icons.gif");
-	background-position: 190px -42px;
-	background-repeat:no-repeat;
-	color:#FF9D13;
-}
+
+
 #body #content #sidebar div#section div div ul.archive li ul li {
 	background-image:none;
 	height:20px;
@@ -542,16 +337,7 @@
 	   */
 	   padding:0;
 }
-#body #content #sidebar div#section div div ul.archive li ul {
-	margin:0 0 30px -20px;
-	/*
-		* margin:0 0 50px -20px;
-		*padding-left:40px;
-		*/
-         background:url("../media/top-border-long.gif");
-	background-position:top center;
-	background-repeat:no-repeat;
-}
+
 #body #content #sidebar div#section div div ul.archive li ul li a {
 	background-image:none;
 	display:inline-block;
@@ -572,36 +358,8 @@
 #body #content #sidebar a img {
 	border:0;
 }
-#body #content #sidebar .search {
-	background:url("../media/bg-search-form.gif");
-	background-position:center;
-	background-repeat:no-repeat;
-	width:300px;
-	height:70px;
-	margin:0;
-}
-#body #content #sidebar .search input {
-	background:url("../media/input-search.gif");
-	background-position:center;
-	background-repeat:no-repeat;
-	width:190px;
-	padding: 8px 5px;
-	border:0;
-	margin:5px 3px 5px 10px;
-	font-size:14px;
-	font-family:"Myriad Pro";
-	color:#7f7154;
-}
-#body #content #sidebar .search button {
-	background:url("../media/buttons.gif");
-	background-position: 0 -270px;
-	background-repeat:no-repeat;
-	width:77px;
-	height:30px;
-	border:0;
-	margin:5px 5px 5px 0;
-	cursor:pointer;
-}
+
+
 #body #content #sidebar .search label {
 	font-size:14px;
 	font-family:"Myriad Pro";
@@ -616,44 +374,9 @@
 	width:300px;
 	margin-top:30px;
 }
-#body #content #sidebar .section .aside {
-	background:url("../media/bg-sidebar-top.gif");
-	background-position:center top;
-	background-repeat:no-repeat;
-	width:300px;
-	padding-top:4px;
-	margin:0 0 20px 0;
-	height:auto;
-}
-#body #content #sidebar .section .aside div {
-	width:300px;
-	background:url("../media/bg-sidebar-bottom.gif");
-	background-position:center bottom;
-	background-repeat:no-repeat;
-	padding-bottom:4px;
-	height:auto;
-}
-#body #content #sidebar .section .aside div div {
-	width:282px;
-	padding: 0 9px 0 9px;
-	background:url("../media/bg-sidebar-mid.gif");
-	background-position:center;
-	height:auto;
-}
-#body #content #sidebar .section .aside div div ul {
-	list-style-type:none;
-	margin:0;
-	padding:0;
-}
-#body #content #sidebar .section .aside div div ul li {
-	background:url("../media/bg-list-item.gif");
-	background-position:center bottom;
-	background-repeat:no-repeat;
-	clear:both;
-	height:32px;
-	line-height:32px;
-	width:282px;
-}
+
+
+
 #body #content #sidebar .section .aside div div ul li a {
 	text-decoration:none;
 	display:inline-block;
@@ -736,16 +459,7 @@
 	font-weight:normal;
 	margin:60px 0 0 0;
 }
-#body #content #sidebar .featured ul li {
-	clear:both;
-	width:300px;
-	height:170px;
-	margin: 10px 0;
-	background: url("../media/shadow.gif");
-	background-repeat:no-repeat;
-	background-position:bottom center;
-	overflow:visible;
-}
+
 #body #content #sidebar .featured ul li h2 {
 	margin:0 0 -10px 0;
 	padding:0;
@@ -802,15 +516,8 @@
 	font-weight:normal;
 }
 #body #content #sidebar .connect ul {
-	margin:0;
-	list-style-type:none;
-}
-#body #content #sidebar .connect ul li {
-	clear:both;
-	height:70px;
-	background: url("../media/top-border-short.gif");
-	background-repeat:no-repeat;
-	background-position: 10px bottom;
+	margin: 0;
+	list-style-type: none;
 }
 #body #content #sidebar .connect ul li a {
 	text-decoration:none;
@@ -819,38 +526,22 @@
 	padding-left:70px;
 	color:#93898a;
 }
-#body #content #sidebar .connect ul li a.facebook {
-	background: url("../media/icons.gif");
-	background-position: 0 -174px;
-	background-repeat:no-repeat;
-}
+
 #body #content #sidebar .connect ul li a.facebook:hover {
 	opacity:0.8;
 	filter:alpha(opacity=80);
 }
-#body #content #sidebar .connect ul li a.subscribe {
-	background: url("../media/icons.gif");
-	background-position: 0 -428px;
-	background-repeat:no-repeat;
-}
+
 #body #content #sidebar .connect ul li a.subscribe:hover {
 	opacity:0.8;
 	filter:alpha(opacity=80);
 }
-#body #content #sidebar .connect ul li a.twitter {
-	background: url("../media/icons.gif");
-	background-repeat:no-repeat;
-	background-position: 0 -588px;
-}
+
 #body #content #sidebar .connect ul li a.twitter:hover {
 	opacity:0.8;
 	filter:alpha(opacity=80);
 }
-#body #content #sidebar .connect ul li a.flicker {
-	background: url("../media/icons.gif");
-	background-repeat:no-repeat;
-	background-position: 0 -268px;
-}
+
 #body #content #sidebar .connect ul li a.flicker:hover {
 	opacity:0.8;
 	filter:alpha(opacity=80);
